@@ -28,5 +28,8 @@ else
 	exit 1
 fi
 
+# Remove the old package-lock.json
+rm ./package-lock.json
+
 # Copy the source file to the destination
 cp "$PKG_JSON_FILE" ./package.json
