@@ -1,9 +1,30 @@
 #!/bin/sh
 
+indent() {
+    sed -u 's/^/       /'
+}
+
 BUILD_DIR=$1
+PKG_JSON_FILE=$(cat "${ENV_DIR}/PKG_JSON_FILE")
 
 # Enter the build directory
 cd $BUILD_DIR
+
+# Check to see if the env var was set
+if [ -n "$PKG_JSON_FILE" ]; then
+  continue
+else
+  echo "Error: Could not find PKG_JSON_FILE env var" | indent
+	exit 1
+fi
+
+# Check to see if the file the env var points to exists
+if [ -f "$PKG_JSON_FILE" ]; then
+ continue
+else
+  echo "Error: Could not find $PKG_JSON_FILE" | indent
+	exit 1
+fi
 
 # Copy the source file to the destination
 cp "$PKG_JSON_FILE" ./package.json
