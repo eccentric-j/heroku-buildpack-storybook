@@ -5,6 +5,8 @@ indent() {
 }
 
 BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
 PKG_JSON_FILE=$(cat "${ENV_DIR}/PKG_JSON_FILE")
 
 # Enter the build directory
