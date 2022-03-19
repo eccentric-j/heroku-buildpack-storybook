@@ -1,5 +1,21 @@
 #!/bin/sh
 
+# Check to see if the env var was set
+if [ -n "$PKG_JSON_FILE" ]; then
+  continue
+else
+  echo "Error: Could not find PKG_JSON_FILE env var"
+	exit 1
+fi
+
+# Check to see if the file the env var points to exists
+if [ -f "$PKG_JSON_FILE" ]; then
+ continue
+else
+  echo "Error: Could not find $PKG_JSON_FILE"
+	exit 1
+fi
+
 # Check to see if the .storybook directory exists
 if [ -d $1/.storybook ]; then
   echo "Storybook"
