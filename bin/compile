@@ -1,0 +1,9 @@
+#!/bin/sh
+
+BUILD_DIR=$1
+
+# Enter the build directory
+cd $BUILD_DIR
+
+# Copy the source file to the destination
+cp "$PKG_JSON_FILE" ./package.json
